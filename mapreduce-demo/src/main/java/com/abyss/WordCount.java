@@ -51,7 +51,7 @@ public class WordCount {
                 count += iterator.next().get();
             }
             v.set(count);
-            context.write(key,v);
+            context.write(key, v);
 
         }
     }
@@ -69,10 +69,8 @@ public class WordCount {
 
         job.setOutputKeyClass(Text.class);                //指定reducer阶段的输出结果的键类型
         job.setOutputValueClass(IntWritable.class);    //指定reducer阶段的输出结果的值类型
-
-
-        FileInputFormat.setInputPaths(job, new Path("/wordcount/input"));    //指定map阶段的输入数据来源于哪个文件夹
-        FileOutputFormat.setOutputPath(job, new Path("/wordcount/output"));    //指定最终输出结果的目的地
+//        FileInputFormat.setInputPaths(job, new Path("/wordcount/input"));    //指定map阶段的输入数据来源于哪个文件夹
+//        FileOutputFormat.setOutputPath(job, new Path("/wordcount/output"));    //指定最终输出结果的目的地
 
         boolean b = job.waitForCompletion(true);        //把job任务，提交给yarn来运行
         System.exit(b ? 0 : 1);                                //如果运行mr程序正常，就正常退出虚拟机，否则就异常退出虚拟机
