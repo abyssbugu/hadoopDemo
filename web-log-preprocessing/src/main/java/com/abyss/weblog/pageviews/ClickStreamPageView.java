@@ -204,8 +204,8 @@ public class ClickStreamPageView {
 //		FileInputFormat.setInputPaths(job, new Path(args[0]));
 //		FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
-		FileInputFormat.setInputPaths(job, new Path("d:/weblog/output"));
-		FileOutputFormat.setOutputPath(job, new Path("d:/weblog/pageviews"));
+		FileInputFormat.setInputPaths(job, new Path("/Users/abyss/Dev/toys/weblog/output"));
+		FileOutputFormat.setOutputPath(job, new Path("/Users/abyss/Dev/toys/weblog/pageviews"));
 
 		job.waitForCompletion(true);
 
