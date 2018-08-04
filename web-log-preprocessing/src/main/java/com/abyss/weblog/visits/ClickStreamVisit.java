@@ -118,8 +118,8 @@ public class ClickStreamVisit {
 		
 //		FileInputFormat.setInputPaths(job, new Path(args[0]));
 //		FileOutputFormat.setOutputPath(job, new Path(args[1]));
-		FileInputFormat.setInputPaths(job, new Path("d:/weblog/pageviews"));
-		FileOutputFormat.setOutputPath(job, new Path("d:/weblog/visitout"));
+		FileInputFormat.setInputPaths(job, new Path("/Users/abyss/Dev/toys/weblog/pageviews"));
+		FileOutputFormat.setOutputPath(job, new Path("/Users/abyss/Dev/toys/weblog/visitout"));
 		
 		boolean res = job.waitForCompletion(true);
 		System.exit(res?0:1);
