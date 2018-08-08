@@ -84,6 +84,11 @@ public class FlowSum {
         private long downflow;
 
         @Override
+        public String toString() {
+            return upflow + "\t" + downflow + "\t" + (upflow + downflow);
+        }
+
+        @Override
         public void write(DataOutput dataOutput) throws IOException {
             dataOutput.writeLong(upflow);
             dataOutput.writeLong(downflow);
