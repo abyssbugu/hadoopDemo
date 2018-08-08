@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.itcast.mapper.TAvgpvNumMapper" >
-  <resultMap id="BaseResultMap" type="cn.itcast.pojo.TAvgpvNum" >
+<mapper namespace="com.abyss.mapper.TAvgpvNumMapper" >
+  <resultMap id="BaseResultMap" type="com.abyss.pojo.TAvgpvNum" >
     <result column="id" property="id" jdbcType="INTEGER" />
     <result column="dateStr" property="datestr" jdbcType="VARCHAR" />
     <result column="avgPvNum" property="avgpvnum" jdbcType="DECIMAL" />
@@ -67,7 +67,7 @@
   <sql id="Base_Column_List" >
     id, dateStr, avgPvNum
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.itcast.pojo.TAvgpvNumExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.abyss.pojo.TAvgpvNumExample" >
     select
     <if test="distinct" >
       distinct
@@ -81,19 +81,19 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="cn.itcast.pojo.TAvgpvNumExample" >
+  <delete id="deleteByExample" parameterType="com.abyss.pojo.TAvgpvNumExample" >
     delete from t_avgpv_num
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.itcast.pojo.TAvgpvNum" >
+  <insert id="insert" parameterType="com.abyss.pojo.TAvgpvNum" >
     insert into t_avgpv_num (id, dateStr, avgPvNum
       )
     values (#{id,jdbcType=INTEGER}, #{datestr,jdbcType=VARCHAR}, #{avgpvnum,jdbcType=DECIMAL}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.itcast.pojo.TAvgpvNum" >
+  <insert id="insertSelective" parameterType="com.abyss.pojo.TAvgpvNum" >
     insert into t_avgpv_num
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -118,7 +118,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.itcast.pojo.TAvgpvNumExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.abyss.pojo.TAvgpvNumExample" resultType="java.lang.Integer" >
     select count(*) from t_avgpv_num
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />

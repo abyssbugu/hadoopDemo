@@ -19,6 +19,7 @@ public class Demo6 {
 			System.out.println("delete = " + delete);
 		}
 		fs.close();
+
 	}
 
 }

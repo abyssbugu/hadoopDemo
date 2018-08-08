@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.itcast.mapper.TFlowNumMapper" >
-  <resultMap id="BaseResultMap" type="cn.itcast.pojo.TFlowNum" >
+<mapper namespace="com.abyss.mapper.TFlowNumMapper" >
+  <resultMap id="BaseResultMap" type="com.abyss.pojo.TFlowNum" >
     <result column="id" property="id" jdbcType="INTEGER" />
     <result column="dateStr" property="datestr" jdbcType="VARCHAR" />
     <result column="pVNum" property="pvnum" jdbcType="INTEGER" />
@@ -71,7 +71,7 @@
   <sql id="Base_Column_List" >
     id, dateStr, pVNum, uVNum, iPNum, newUvNum, visitNum
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.itcast.pojo.TFlowNumExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.abyss.pojo.TFlowNumExample" >
     select
     <if test="distinct" >
       distinct
@@ -85,13 +85,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="cn.itcast.pojo.TFlowNumExample" >
+  <delete id="deleteByExample" parameterType="com.abyss.pojo.TFlowNumExample" >
     delete from t_flow_num
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.itcast.pojo.TFlowNum" >
+  <insert id="insert" parameterType="com.abyss.pojo.TFlowNum" >
     insert into t_flow_num (id, dateStr, pVNum, 
       uVNum, iPNum, newUvNum, 
       visitNum)
@@ -99,7 +99,7 @@
       #{uvnum,jdbcType=INTEGER}, #{ipnum,jdbcType=INTEGER}, #{newuvnum,jdbcType=INTEGER}, 
       #{visitnum,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="cn.itcast.pojo.TFlowNum" >
+  <insert id="insertSelective" parameterType="com.abyss.pojo.TFlowNum" >
     insert into t_flow_num
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -148,7 +148,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.itcast.pojo.TFlowNumExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.abyss.pojo.TFlowNumExample" resultType="java.lang.Integer" >
     select count(*) from t_flow_num
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
