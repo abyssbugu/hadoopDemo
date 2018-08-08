@@ -1,9 +1,13 @@
 package com.abyss;
 
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.*;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.NullWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.io.WritableComparable;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Partitioner;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
@@ -11,14 +15,15 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.util.Iterator;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Abyss on 2018/8/8.
  * description:
  */
-//需求：统计出每个手机号，产生的总上行流量、总下行流量、总流量是多少
-public class SortFlowSum {
+//需求：将号码分四个区
+public class PartitionPhoneNum {
 
     public static void main(String[] args) throws Exception {
         Job job = Job.getInstance();
@@ -31,13 +36,39 @@ public class SortFlowSum {
         job.setOutputKeyClass(Flowbean.class);
         job.setOutputValueClass(NullWritable.class);
 
-        job.setJarByClass(SortFlowSum.class);
+        job.setJarByClass(PartitionPhoneNum.class);
+        FileInputFormat.setInputPaths(job, new Path("/Users/abyss/Dev/toys/flowsum/sortoutput"));
+        FileOutputFormat.setOutputPath(job, new Path("/Users/abyss/Dev/toys/flowsum/partitionoutput"));
 
-        FileInputFormat.setInputPaths(job, new Path("/Users/abyss/Dev/toys/flowsum/output"));
-        FileOutputFormat.setOutputPath(job, new Path("/Users/abyss/Dev/toys/flowsum/sortoutput"));
+        job.setNumReduceTasks(4);
+        job.setPartitionerClass(MyPartitioner.class);
+
         boolean b = job.waitForCompletion(true);
         System.exit(b ? 0 : 1);
 
+    }
+
+    public static class MyPartitioner extends Partitioner<Flowbean, NullWritable> {
+        private static Map<String, Integer> map = new HashMap();
+
+        static {
+            map.put("134", 0);
+            map.put("135", 0);
+            map.put("136", 1);
+            map.put("137", 1);
+            map.put("138", 2);
+            map.put("139", 2);
+        }
+
+        @Override
+        public int getPartition(Flowbean flowbean, NullWritable nullWritable, int i) {
+            String substring = flowbean.getPhone().substring(0, 3);
+            Integer o = map.get(substring);
+            if (o == null) {
+                return 3;
+            }
+            return o;
+        }
     }
 
     public static class MyMapper extends Mapper<LongWritable, Text, Flowbean, NullWritable> {
@@ -76,31 +107,9 @@ public class SortFlowSum {
             return phone + "\t" + upflow + "\t" + downflow + "\t" + sumflow;
         }
 
-        /**
-         * 1、按照总流量从大到小的顺序排序
-         * 2、总流量一样，那就按照手机号的自然顺序来排序
-         * 13480253104	180	180	360
-         * 13502468823	7335	110349	117684
-         */
         @Override
         public int compareTo(Flowbean o) {
-            //后来的大于前面的
-            if (this.sumflow > o.sumflow) {
-                return -1;
-            }
-            if (this.sumflow < o.sumflow) {
-                return 1;
-            }
-            //相同
-            int num = this.phone.compareTo(o.phone);
-            if (num > 0) {
-                return -1;
-            }
-            if (num < 0) {
-                return 1;
-            }
-            return 0;
-
+            return this.phone.compareTo(o.phone);
         }
 
         @Override
