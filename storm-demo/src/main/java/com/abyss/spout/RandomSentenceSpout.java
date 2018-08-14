@@ -9,6 +9,7 @@ import org.apache.storm.tuple.Values;
 
 import java.util.Map;
 import java.util.Random;
+import java.util.UUID;
 
 /**
  * Created by Abyss on 2018/8/13.
@@ -40,8 +41,12 @@ public class RandomSentenceSpout extends BaseRichSpout {
         //随机生成句子
         String sentence = sentences[new Random().nextInt(sentences.length)];
         System.out.println("生成的句子是 : " + sentence);
-        //向下游输出
-        collector.emit(new Values(sentence));
+
+        // 生成消息id，并且把数据存放到messages的map中
+        String msgId = UUID.randomUUID().toString();
+        System.out.println("生成的句子为 --> " + sentence +", msgid = " + msgId);
+        // 发送字符串
+        this.collector.emit(new Values(sentence), msgId);
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
@@ -50,6 +55,16 @@ public class RandomSentenceSpout extends BaseRichSpout {
 
     }
 
+    @Override
+    public void ack(Object msgId) {
+        System.out.println(msgId + " --> 处理成功！");
+    }
+
+    @Override
+    public void fail(Object msgId) {
+        System.out.println(msgId + " --> 处理失败！！！");
+        // 失败后，要进行重试操作
+    }
     @Override
     public void declareOutputFields(OutputFieldsDeclarer outputFieldsDeclarer) {
         //定义向下游输出的名称

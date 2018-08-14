@@ -36,8 +36,16 @@ public class WordCountBolt extends BaseRichBolt {
         }
         count++;
         map.put(word, count);
-        outputCollector.emit(new Values(word, count));
+        outputCollector.emit(tuple,new Values(word, count));
 
+        //这里模拟有时成功有时失败
+        if(System.currentTimeMillis() % 2 == 0){
+            // 偶数，成功
+            outputCollector.ack(tuple);
+        }else{
+            // 奇数，失败
+            outputCollector.fail(tuple);
+        }
 
     }
 
