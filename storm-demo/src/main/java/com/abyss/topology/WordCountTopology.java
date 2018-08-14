@@ -40,15 +40,27 @@ public class WordCountTopology {
         //设置工作进程数
         config.setNumWorkers(2);
 
-        //第四步，提交拓扑到集群，这里先提交到本地的模拟环境中进行测试
-        new LocalCluster().submitTopology("WordCountTopology", new Config(),topology );
+        if (args == null || args.length == 0) {
+            // 本地模式
 
-        //提交到集群
-//        try {
-//            StormSubmitter.submitTopology("WordCountTopology", config, topology);
-//        } catch (AlreadyAliveException | InvalidTopologyException | AuthorizationException e) {
-//            e.printStackTrace();
-//        }
+            //第四步，提交拓扑到集群，这里先提交到本地的模拟环境中进行测试
+            LocalCluster localCluster = new LocalCluster();
+            localCluster.submitTopology("WordCountTopology", config, topology);
+        } else {
+            // 集群模式
+
+            config.setNumWorkers(2); // 设置工作进程数
+            try {
+                //提交到集群，并且将参数作为拓扑的名称
+                StormSubmitter.submitTopology(args[0], config, topology);
+            } catch (AlreadyAliveException e) {
+                e.printStackTrace();
+            } catch (InvalidTopologyException e) {
+                e.printStackTrace();
+            } catch (AuthorizationException e) {
+                e.printStackTrace();
+            }
+        }
 
     }
 }
