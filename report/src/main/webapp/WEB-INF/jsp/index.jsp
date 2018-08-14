@@ -196,7 +196,7 @@
                             <p class="blue">You have 7 new notifications</p>
                         </li>
                         <li><a href="#"> <span class="label label-danger">
-										<i class="fa fa-bolt"> </i>
+										<i class="fa fa-com.abyss.bolt"> </i>
 								</span> Server #3 overloaded. <span class="small italic"> 34
 										mins </span>
                         </a></li>
@@ -206,7 +206,7 @@
 										Hours </span>
                         </a></li>
                         <li><a href="#"> <span class="label label-danger">
-										<i class="fa fa-bolt"> </i>
+										<i class="fa fa-com.abyss.bolt"> </i>
 								</span> Database overloaded 24%. <span class="small italic"> 4
 										hrs </span>
                         </a></li>

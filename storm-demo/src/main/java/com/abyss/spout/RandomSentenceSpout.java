@@ -1,4 +1,4 @@
-package spout;
+package com.abyss.spout;
 
 import org.apache.storm.spout.SpoutOutputCollector;
 import org.apache.storm.task.TopologyContext;

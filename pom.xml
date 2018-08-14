@@ -15,6 +15,7 @@
         <module>report</module>
         <module>kafka-demo</module>
         <module>storm-demo</module>
+        <module>wordcount-web</module>
     </modules>
 
 
