@@ -16,6 +16,7 @@
             <groupId>org.apache.storm</groupId>
             <artifactId>storm-core</artifactId>
             <version>1.1.1</version>
+            <!--发布解开注释-->
             <!--<scope>provided</scope>-->
         </dependency>
         <dependency>
@@ -56,6 +57,7 @@
         </dependency>
 
     </dependencies>
+    <!--打包工具-->
     <build>
         <plugins>
             <plugin>
