@@ -23,9 +23,9 @@ public class PrintBolt extends BaseRichBolt {
 
     @Override
     public void execute(Tuple tuple) {
-//        String word = tuple.getStringByField("word");
-//        Integer count = tuple.getIntegerByField("count");
-//        System.out.println(word + "----" + count);
+        String word = tuple.getStringByField("word");
+        Integer count = tuple.getIntegerByField("count");
+        System.out.println(word + "----" + count);
 
         // 成功
         outputCollector.ack(tuple);

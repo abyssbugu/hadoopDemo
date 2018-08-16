@@ -26,15 +26,17 @@ public class SplitSentenceBolt extends BaseRichBolt {
 
     @Override
     public void execute(Tuple tuple) {
-        String sentence = tuple.getStringByField("sentence");
+//        String sentence = tuple.getStringByField("sentence");
+        String sentence = tuple.getStringByField("value");
+        System.out.println("接收到消息为 --> " + sentence);
         // 进行分割处理
         String[] words = sentence.split(" ");
         for (String word : words) {
-            outputCollector.emit(tuple,new Values(word));
+            outputCollector.emit(tuple, new Values(word));
         }
 
-        // 失败
-        this.outputCollector.fail(tuple);
+        // 成功
+        this.outputCollector.ack(tuple);
     }
 
     @Override

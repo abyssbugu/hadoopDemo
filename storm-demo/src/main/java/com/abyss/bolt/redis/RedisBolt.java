@@ -1,4 +1,4 @@
-package com.abyss.bolt;
+package com.abyss.bolt.redis;
 
 import org.apache.storm.task.OutputCollector;
 import org.apache.storm.task.TopologyContext;
@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  * Created by Abyss on 2018/8/14.
- * description:
+ * description:Redis整合方式一
  */
 public class RedisBolt extends BaseRichBolt {
     private JedisPool jedisPool;
