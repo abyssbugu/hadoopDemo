@@ -2,14 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
     <groupId>com.abyss</groupId>
+    <version>1.0-SNAPSHOT</version>
+    <modelVersion>4.0.0</modelVersion>
+
     <artifactId>bazz-dashboard</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+
     <modules>
         <module>dashboard-web</module>
-        <!--<module>itcast-dashboard-generate</module>-->
+        <module>dashboard-generate</module>
+        <!--<module>dashboard-generate</module>-->
     </modules>
-
 </project>

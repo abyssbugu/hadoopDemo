@@ -16,6 +16,7 @@
         <module>kafka-demo</module>
         <module>storm-demo</module>
         <module>wordcount-web</module>
+        <module>bazz-dashboard</module>
     </modules>
 
 
