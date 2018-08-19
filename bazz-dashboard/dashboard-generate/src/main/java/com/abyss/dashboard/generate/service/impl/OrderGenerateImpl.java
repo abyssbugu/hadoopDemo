@@ -1,7 +1,7 @@
-package com.abyss.generate.service.impl;
+package com.abyss.dashboard.generate.service.impl;
 
-import com.abyss.generate.bean.Order;
-import com.abyss.generate.service.IGenerate;
+import com.abyss.dashboard.generate.bean.Order;
+import com.abyss.dashboard.generate.service.IGenerate;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

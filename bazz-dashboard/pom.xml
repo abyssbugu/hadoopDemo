@@ -12,6 +12,7 @@
     <modules>
         <module>dashboard-web</module>
         <module>dashboard-generate</module>
+        <module>dashboard-storm</module>
         <!--<module>dashboard-generate</module>-->
     </modules>
 </project>

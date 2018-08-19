@@ -1,4 +1,4 @@
-package com.abyss.generate.bean;
+package com.abyss.dashboard.generate.bean;
 
 import java.util.Date;
 

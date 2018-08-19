@@ -1,14 +1,11 @@
-package com.abyss.generate.util;
+package com.abyss.dashboard.generate.util;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.RandomUtils;
-import sun.rmi.transport.ObjectTable;
 
-import java.io.File;
 import java.io.IOException;
 
 public class CityUtils {

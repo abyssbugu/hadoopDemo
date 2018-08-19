@@ -1,6 +1,6 @@
-package com.abyss.generate;
+package com.abyss.dashboard.generate;
 
-import com.abyss.generate.service.IGenerate;
+import com.abyss.dashboard.generate.service.IGenerate;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
