@@ -10,7 +10,7 @@
 打包的本地路径需在pom中设置
 
 ## dashboard-storm模块
-数据发送到kafka中，通过Storm处理数据，将数据做持久化。
+kafka发出数据，通过Storm处理数据，将数据持久化到mysql。
 
 
 
