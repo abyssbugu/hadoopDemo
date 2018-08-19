@@ -12,6 +12,8 @@
 ## dashboard-storm模块
 kafka发出数据，通过Storm处理数据，将数据持久化到mysql。
 
+## dashboard-web模块
+从mysql中获取数据,web进行展示如:日活跃用户数,订单支付次数,注册用户城市分布状况
 
 
 
