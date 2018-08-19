@@ -1,6 +1,7 @@
 package com.abyss.dashboard.controller;
 
 import com.abyss.dashboard.service.DAUService;
+import com.abyss.dashboard.service.OrderService;
 import com.abyss.dashboard.service.UserService;
 import com.abyss.dashboard.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class IndexController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private OrderService orderService;
+
 
     @RequestMapping("index")
     public ModelAndView index(){
@@ -39,6 +43,11 @@ public class IndexController {
         mv.addObject("dau_day_month_str", DateUtils.getDateStrOfDayLastMonth());
 
         return mv;
+    }
+    @GetMapping("payOrder")
+    @ResponseBody
+    public Map<String,Object> payOrder(){
+        return this.orderService.queryPayOrderGroupByDate();
     }
 
     @GetMapping("userCity")
